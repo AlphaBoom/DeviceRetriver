@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">DeviceRetriever</string>
+    <string name="action_settings">Settings</string>
+
+    <!--phone type-->
+    <string name="PHONE_TYPE_NONE">NONE</string>
+    <string name="PHONE_TYPE_GSM">GSM</string>
+    <string name="PHONE_TYPE_CDMA">CDMA</string>
+    <string name="PHONE_TYPE_SIP">SIP</string>
+    <!--radio type-->
+    <string name="NETWORK_TYPE_NONE">NONE</string>
+    <string name="NETWORK_TYPE_GPRS">GPRS</string>
+    <string name="NETWORK_TYPE_EDGE">EDGE</string>
+    <string name="NETWORK_TYPE_UMTS">UMTS</string>
+    <string name="NETWORK_TYPE_CDMA">CDMA</string>
+    <string name="NETWORK_TYPE_EVDO_0">EVDO_0</string>
+    <string name="NETWORK_TYPE_EVDO_A">EVDO_A</string>
+    <string name="NETWORK_TYPE_1xRTT">1xRTT</string>
+    <string name="NETWORK_TYPE_HSDPA">HSDPA</string>
+    <string name="NETWORK_TYPE_HSUPA">HSUPA</string>
+    <string name="NETWORK_TYPE_HSPA">HSPA</string>
+    <string name="NETWORK_TYPE_IDEN">IDEN</string>
+    <string name="NETWORK_TYPE_EVDO_B">EVDO_B</string>
+    <string name="NETWORK_TYPE_LTE">LTE</string>
+    <string name="NETWORK_TYPE_EHRPD">EHRPD</string>
+    <string name="NETWORK_TYPE_HSPAP">HSPAP</string>
+    <string name="NETWORK_TYPE_GSM">GSM</string>
+    <!--battery status-->
+    <string name="BATTERY_STATUS_UNKNOWN">UNKNOWN</string>
+    <string name="BATTERY_STATUS_CHARGING">CHARGING</string>
+    <string name="BATTERY_STATUS_DISCHARGING">DISCHARGING</string>
+    <string name="BATTERY_STATUS_NOT_CHARGING">NOT CHARGING</string>
+    <string name="BATTERY_STATUS_FULL">FULL</string>
+</resources>
