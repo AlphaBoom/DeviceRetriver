@@ -31,4 +31,12 @@
     <string name="BATTERY_STATUS_DISCHARGING">DISCHARGING</string>
     <string name="BATTERY_STATUS_NOT_CHARGING">NOT CHARGING</string>
     <string name="BATTERY_STATUS_FULL">FULL</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+
+    <!-- telephone info description -->
+    <string name="desc_sim_operator">SIM卡运营商</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
