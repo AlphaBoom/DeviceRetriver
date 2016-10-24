@@ -22,12 +22,10 @@ import java.util.List;
  * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 
-public class TelephoneRetriever implements PermissionRetriever {
-    private final Context mContext;
-    private List<Info> mResult;
+public class TelephoneRetriever extends BasePermissionRetriever {
 
     public TelephoneRetriever(@NonNull Context context){
-        mContext  = context;
+        super(context);
     }
 
     @Override
@@ -38,13 +36,9 @@ public class TelephoneRetriever implements PermissionRetriever {
         return new String[0];
     }
 
+
     @Override
-    public List<Info> retrieve(boolean ignorePermission) {
-        if(mResult == null){
-            mResult = new ArrayList<>();
-        }else {
-            mResult.clear();
-        }
+    List<Info> doRetrieve(boolean ignorePermission) {
         TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         //phone type
         int phoneType = tm.getPhoneType();
@@ -155,8 +149,4 @@ public class TelephoneRetriever implements PermissionRetriever {
         return mResult;
     }
 
-    @Override
-    public List<Info> retrieve() {
-        return retrieve(true);
-    }
 }

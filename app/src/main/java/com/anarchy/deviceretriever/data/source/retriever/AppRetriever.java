@@ -35,7 +35,7 @@ public class AppRetriever extends BasePermissionRetriever {
     }
 
     @Override
-    public List<Info> retrieve(boolean ignorePermission) {
+    List<Info> doRetrieve(boolean ignorePermission) {
         //应用包名
         mResult.add(new Info("package name",mContext.getPackageName(),"应用包名"));
         //uid

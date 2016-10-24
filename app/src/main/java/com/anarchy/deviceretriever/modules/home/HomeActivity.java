@@ -1,24 +1,31 @@
 package com.anarchy.deviceretriever.modules.home;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.anarchy.deviceretriever.R;
+import com.anarchy.deviceretriever.data.Info;
+import com.anarchy.deviceretriever.data.source.AndroidFingerprintRetrieverSource;
 import com.anarchy.deviceretriever.deprecated.DeviceInfo;
 import com.anarchy.deviceretriever.deprecated.DeviceRetriever;
+
+import java.util.Arrays;
+import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -30,6 +37,8 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, HomeContract.View {
 
     private HomeContract.Presenter mPresenter;
+    private AndroidFingerprintRetrieverSource mSource;
+    private static final int REQUEST_CODE = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,11 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+        mSource = AndroidFingerprintRetrieverSource.getDefault(this);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         final TextView textView = (TextView) findViewById(R.id.text_view);
@@ -48,6 +62,7 @@ public class HomeActivity extends AppCompatActivity
                         .setAction("Action", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                get();
                                 final long start = System.currentTimeMillis();
                                 Observable.defer(new Func0<Observable<DeviceInfo>>() {
                                     @Override
@@ -74,6 +89,7 @@ public class HomeActivity extends AppCompatActivity
                                                 textView.setText(deviceInfo.toString());
                                             }
                                         });
+
                             }
                         }).show();
             }
@@ -87,6 +103,42 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+                get();
+        }
+    }
+
+
+    private void get(){
+        final long start = System.currentTimeMillis();
+        mSource.getInfoList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<Info>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onNext(List<Info> infos) {
+                        for(Info info : infos){
+                            Log.w("wzd",info.toString());
+                        }
+                        long during = System.currentTimeMillis() - start;
+                        Log.w("wzd","init time:"+ during);
+                    }
+                });
     }
 
     @Override
@@ -128,6 +180,10 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            if(mSource != null && Build.VERSION.SDK_INT >= 23){
+                Log.w("wzd", Arrays.toString(mSource.checkUnGrantedPermission()));
+                requestPermissions(mSource.checkUnGrantedPermission(),REQUEST_CODE);
+            }
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -139,7 +195,6 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

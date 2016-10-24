@@ -27,18 +27,20 @@ abstract class BasePermissionRetriever implements PermissionRetriever {
 
     @Override
     public List<Info> retrieve() {
-        return prepareRetrieve(true);
+        return retrieve(true);
     }
 
-    private List<Info> prepareRetrieve(boolean ignorePermission) {
-        if (mResult == null) {
+    @Override
+    public List<Info> retrieve(boolean ignorePermission) {
+        if(mResult == null) {
             mResult = new ArrayList<>();
-        } else {
+        }else {
             mResult.clear();
         }
-        return retrieve(ignorePermission);
+        return doRetrieve(ignorePermission);
     }
 
+    abstract List<Info> doRetrieve(boolean ignorePermission);
 
     String[] addPermission(@NonNull String[] source, String add) {
         int length = source.length + 1;

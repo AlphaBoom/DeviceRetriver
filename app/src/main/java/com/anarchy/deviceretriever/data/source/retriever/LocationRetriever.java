@@ -46,9 +46,10 @@ public class LocationRetriever extends BasePermissionRetriever {
     }
 
 
+
     @SuppressLint("DefaultLocale")
     @Override
-    public List<Info> retrieve(boolean ignorePermission) {
+    List<Info> doRetrieve(boolean ignorePermission) {
         LocationManager locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             Location gpsLocation = null;
@@ -87,7 +88,8 @@ public class LocationRetriever extends BasePermissionRetriever {
     }
 
 
-    private void injectAddress(double latitude,double longitude,int maxResult){
+    @SuppressLint("DefaultLocale")
+    private void injectAddress(double latitude, double longitude, int maxResult){
         Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
         try {
             List<Address> addressList = geocoder.getFromLocation(latitude,longitude,maxResult);

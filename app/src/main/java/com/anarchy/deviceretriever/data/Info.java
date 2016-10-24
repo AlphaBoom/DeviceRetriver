@@ -36,4 +36,16 @@ public class Info {
         this.permission = permission;
         this.permissionDesc = permissionDesc;
     }
+
+    @Override
+    public String toString() {
+        return "Info{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", description='" + description + '\'' +
+                ", permission='" + permission + '\'' +
+                ", permissionDesc='" + permissionDesc + '\'' +
+                '}';
+    }
 }

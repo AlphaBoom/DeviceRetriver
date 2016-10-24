@@ -39,12 +39,7 @@ public class DeviceRetriever extends BasePermissionRetriever {
     }
 
     @Override
-    public String[] checkUnGrantedPermission() {
-        return new String[0];
-    }
-
-    @Override
-    public List<Info> retrieve(boolean ignorePermission) {
+    List<Info> doRetrieve(boolean ignorePermission) {
         //Android 系统版本
         mResult.add(new Info("release version", Build.VERSION.RELEASE,"Android 系统版本"));
         mResult.add(new Info("release version int",String.valueOf(Build.VERSION.SDK_INT),"Android 系统版本 数字"));
@@ -141,7 +136,7 @@ public class DeviceRetriever extends BasePermissionRetriever {
                     mResult.add(new Info(batteryStatusName,"NOT_CHARGING"));
                     break;
                 default:
-                   mResult.add(new Info(batteryStatusName,"UNKNOWN"));
+                    mResult.add(new Info(batteryStatusName,"UNKNOWN"));
             }
             String batteryTemp = Integer.toString(batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1));
             String batteryLevel = Integer.toString(batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1));
@@ -150,4 +145,10 @@ public class DeviceRetriever extends BasePermissionRetriever {
         }
         return mResult;
     }
+
+    @Override
+    public String[] checkUnGrantedPermission() {
+        return new String[0];
+    }
+
 }

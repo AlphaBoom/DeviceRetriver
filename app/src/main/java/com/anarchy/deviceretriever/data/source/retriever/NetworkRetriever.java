@@ -55,25 +55,33 @@ public class NetworkRetriever extends BasePermissionRetriever {
         return unGrantedPermission;
     }
 
-
+    
 
     @Override
-    public List<Info> retrieve(boolean ignorePermission) {
+    List<Info> doRetrieve(boolean ignorePermission) {
+        WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
         //proxy
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             mResult.add(new Info("proxy",Proxy.getHost(mContext) + ":" + Proxy.getPort(mContext)));
         } else {
             mResult.add(new Info("proxy",System.getProperty("http.proxyHost") + ":" + System.getProperty("http.proxyPort")));
         }
-        if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED){
+        if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(mContext,Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED){
             mResult.add(new Info("wifi mac", DeviceUtils.getWifiMacAddress()));
             mResult.add(new Info("cell ip",DeviceUtils.getLocalIpAddress()));
         }else {
             Log.w(TAG,"android.permission.INTERNET  denied");
+            if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED){
+                WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                if(wifiInfo != null){
+                    mResult.add(new Info("wifi mac",wifiInfo.getMacAddress()));
+                    mResult.add(new Info("cell ip", CommonUtils.formatIpInt(wifiInfo.getIpAddress())));
+                }
+            }
             if(!ignorePermission) return null;
         }
         if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED){
-            WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
             DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
             if(dhcpInfo != null){
                 mResult.add(new Info("gateway", CommonUtils.formatIpInt(dhcpInfo.gateway),"网关"));
