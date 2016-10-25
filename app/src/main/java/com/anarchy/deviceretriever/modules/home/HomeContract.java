@@ -1,5 +1,6 @@
 package com.anarchy.deviceretriever.modules.home;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.anarchy.deviceretriever.core.BaseView;
@@ -25,10 +26,35 @@ public interface HomeContract {
         void showUnGrantedPermissions(String[] unGrantedPermissions);
 
         /**
+         * 以获取到全部权限
+         */
+        void showAllPermissionGranted();
+
+        /**
          * 显示获取到的数据
          * @param infos
          */
         void showInfos(List<Info> infos);
+
+        /**
+         * 显示初始化失败提示
+         */
+        void showFetchErrorToast(String reason);
+
+        /**
+         * 显示刷新失败提示
+         */
+        void showRefreshErrorToast(String reason);
+
+        /**
+         * 无法申请权限
+         */
+        void unableToRequestPermissions();
+
+        /**
+         * 显示刷新成功
+         */
+        void showRefreshSuccessToast();
 
     }
     interface Presenter {
@@ -44,14 +70,20 @@ public interface HomeContract {
 
         /**
          * 向系统申请权限
-         * @param context
+         * @param activity
          * @param requestCode  请求code 用于Activity result 验证
          */
-        void requestUnGrantedPermissions(Context context, int requestCode);
+        void requestUnGrantedPermissions(Activity activity, int requestCode);
 
         /**
          * 刷新数据
          */
         void refresh();
+
+
+        /**
+         * 页面关闭
+         */
+        void destroy();
     }
 }

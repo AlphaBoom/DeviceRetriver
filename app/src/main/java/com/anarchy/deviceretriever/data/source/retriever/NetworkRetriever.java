@@ -100,13 +100,16 @@ public class NetworkRetriever extends BasePermissionRetriever {
             }else {
                 Log.w(TAG,"no wifi connect");
             }
-            List<ScanResult> scanResults = wifiManager.getScanResults();
-            if(scanResults != null) {
-                List<String> scanSSIDs = new ArrayList<>();
-                for (ScanResult scanResult : scanResults) {
-                    scanSSIDs.add(scanResult.SSID);
+            if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                List<ScanResult> scanResults = wifiManager.getScanResults();
+                if (scanResults != null) {
+                    List<String> scanSSIDs = new ArrayList<>();
+                    for (ScanResult scanResult : scanResults) {
+                        scanSSIDs.add(scanResult.SSID);
+                    }
+                    mResult.add(new Info("scan ssid", Arrays.toString(scanSSIDs.toArray())));
                 }
-                mResult.add(new Info("scan ssid",Arrays.toString(scanSSIDs.toArray())));
             }
             List<WifiConfiguration> wifiConfigurations = wifiManager.getConfiguredNetworks();
             if(wifiConfigurations != null){

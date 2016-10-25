@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity
             HomeFragment homeFragment = new HomeFragment();
             new HomePresenter(homeFragment, AndroidFingerprintRetrieverSource.getDefault(this));
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_container,new HomeFragment())
-                    .addToBackStack(null)
+                    .add(R.id.fragment_container,homeFragment)
                     .commit();
         }
     }
@@ -76,9 +75,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

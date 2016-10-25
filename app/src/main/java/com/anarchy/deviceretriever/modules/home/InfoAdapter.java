@@ -25,6 +25,11 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     private List<Info> mInfoList;
 
 
+    public void replaceData(List<Info> listInfo){
+        mInfoList = listInfo;
+        notifyItemRangeChanged(0,mInfoList.size()-1);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_info, parent, false);

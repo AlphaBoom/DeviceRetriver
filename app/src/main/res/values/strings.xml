@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DeviceRetriever</string>
-    <string name="action_settings">Settings</string>
+    <string name="check_permission">Check Permission</string>
 
     <!--phone type-->
     <string name="PHONE_TYPE_NONE">NONE</string>
