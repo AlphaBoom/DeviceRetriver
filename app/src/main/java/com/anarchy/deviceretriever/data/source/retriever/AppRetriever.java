@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
 
 import com.anarchy.deviceretriever.data.Info;
 import com.anarchy.deviceretriever.data.source.retriever.utils.CommonUtils;

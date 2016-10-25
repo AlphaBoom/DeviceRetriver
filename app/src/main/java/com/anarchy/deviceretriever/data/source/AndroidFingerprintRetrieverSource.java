@@ -28,7 +28,7 @@ import rx.functions.Func0;
  * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 
-public class AndroidFingerprintRetrieverSource implements InfoSource {
+public class AndroidFingerprintRetrieverSource implements PermissionInfoSource {
     private final List<PermissionRetriever> mRetrievers;
     private boolean mIgnoreUnGrantedPermission;
 

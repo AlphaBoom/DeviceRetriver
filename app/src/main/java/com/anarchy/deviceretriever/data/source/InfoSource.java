@@ -15,12 +15,13 @@ import rx.Observable;
  * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 
-public interface InfoSource {
+interface InfoSource {
     /**
      * 获取所有信息
      * @return
      */
     Observable<List<Info>> getInfoList();
+
 
     /**
      * 获取信息类别

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="info"
+            type="com.anarchy.deviceretriever.data.Info"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:text="@{info.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
+            tools:text="Dummy Title"/>
+
+        <TextView
+            android:text="@{info.value}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView2"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            android:gravity="right"
+            tools:text="value"
+            />
+
+        <TextView
+            tools:text="description"
+            android:text="@{info.description}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/textView2"
+            android:layout_marginLeft="11dp"
+            android:textStyle="normal|italic"
+            android:textSize="13sp"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>
