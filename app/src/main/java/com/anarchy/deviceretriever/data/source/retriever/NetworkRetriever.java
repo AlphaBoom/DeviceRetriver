@@ -46,7 +46,7 @@ public class NetworkRetriever extends BasePermissionRetriever {
         if(ActivityCompat.checkSelfPermission(mContext, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
             unGrantedPermission = addPermission(unGrantedPermission,Manifest.permission.INTERNET);
         }
-        if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED){
+        if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED){
             unGrantedPermission = addPermission(unGrantedPermission,Manifest.permission.ACCESS_NETWORK_STATE);
         }
         if(ActivityCompat.checkSelfPermission(mContext,Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED){
@@ -134,6 +134,6 @@ public class NetworkRetriever extends BasePermissionRetriever {
             Log.w(TAG,"android.permission.ACCESS_NETWORK_STATE denied");
             if(!ignorePermission) return null;
         }
-        return null;
+        return mResult;
     }
 }

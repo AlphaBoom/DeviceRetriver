@@ -18,6 +18,7 @@ import java.util.List;
 
 import rx.Observable;
 import rx.functions.Func0;
+import rx.schedulers.Schedulers;
 
 /**
  * Version 2.1.1
@@ -88,7 +89,7 @@ public class AndroidFingerprintRetrieverSource implements PermissionInfoSource {
             public Observable<List<Info>> call() {
                 return Observable.just(getAllInfo());
             }
-        });
+        }).subscribeOn(Schedulers.io());
     }
 
     @Override

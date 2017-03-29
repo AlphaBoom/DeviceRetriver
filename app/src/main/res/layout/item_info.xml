@@ -13,25 +13,26 @@
 
 
         <TextView
-            android:text="@{info.name}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@{info.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="15sp"
             android:textStyle="normal|bold"
-            android:fontFamily="sans-serif"
-            tools:text="Dummy Title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintVertical_bias="0.19"
-            app:layout_constraintRight_toLeftOf="@+id/textView3"
+            tools:text="Dummpy Title"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
             android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.28"/>
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="11dp"/>
 
         <TextView
             android:text="@{info.value}"
@@ -46,37 +47,41 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_constraintRight_creator="1"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline"/>
+            app:layout_constraintLeft_toLeftOf="@+id/guideline"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginRight="8dp"
+            app:layout_constraintVertical_bias="0.545"
+            android:layout_marginEnd="8dp"/>
 
         <TextView
             tools:text="description"
-            android:maxLines="2"
+            android:maxLines="1"
             android:ellipsize="end"
             android:text="@{info.description}"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView4"
             tools:layout_constraintTop_creator="1"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:layout_constraintLeft_creator="1"
-            app:layout_constraintLeft_toLeftOf="@+id/textView2"
             android:textStyle="normal|italic"
             android:textSize="13sp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="24dp"
-            app:layout_constraintRight_toLeftOf="@+id/guideline"
             android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toLeftOf="@+id/guideline"
             android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="9dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"/>
 
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/guideline"
             android:orientation="vertical"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="138dp"
-            app:layout_constraintGuide_percent="0.359375"/>
+            app:layout_constraintGuide_percent="0.5"
+            tools:layout_editor_absoluteY="81dp"
+            tools:layout_editor_absoluteX="192dp"/>
     </android.support.constraint.ConstraintLayout>
 </layout>
