@@ -56,6 +56,12 @@ public interface HomeContract {
          */
         void showRefreshSuccessToast();
 
+
+        /**
+         * 显示详情窗口
+         */
+        void showInfoDetailDialog(String message);
+
     }
     interface Presenter {
         /**
@@ -85,5 +91,12 @@ public interface HomeContract {
          * 页面关闭
          */
         void destroy();
+
+
+        /**
+         * 目标item 被点击
+         * @param info
+         */
+        void onItemClick(Info info);
     }
 }

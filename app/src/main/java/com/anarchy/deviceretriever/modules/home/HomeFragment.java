@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment implements HomeContract.View{
                 ,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        mInfoAdapter = new InfoAdapter();
+        mInfoAdapter = new InfoAdapter(mPresenter);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerView.setAdapter(mInfoAdapter);
         mBinding.fab.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +128,15 @@ public class HomeFragment extends Fragment implements HomeContract.View{
     public void showRefreshSuccessToast() {
         mSnackbar.setText("refresh success");
         mSnackbar.show();
+    }
+
+    @Override
+    public void showInfoDetailDialog(String message) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Info Detail")
+                .setMessage(message)
+                .setCancelable(true)
+                .show();
     }
 
 

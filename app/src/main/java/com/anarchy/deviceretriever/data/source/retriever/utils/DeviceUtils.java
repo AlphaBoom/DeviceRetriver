@@ -205,7 +205,7 @@ public class DeviceUtils {
             String result;
             while ((result = bufferedReader.readLine()) != null){
                 if(result.contains("Hardware")){
-                    String[] a = result.split("\\s+",2);
+                    String[] a = result.split(":",2);
                     r = a[1];
                 }
             }

@@ -2,6 +2,7 @@ package com.anarchy.deviceretriever.modules.home;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,11 @@ import java.util.List;
 
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     private List<Info> mInfoList;
+    private final HomeContract.Presenter mPresenter;
 
+    public InfoAdapter(HomeContract.Presenter presenter){
+        mPresenter = presenter;
+    }
 
     public void replaceData(List<Info> listInfo){
         mInfoList = listInfo;
@@ -33,13 +38,21 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_info, parent, false);
-
+        Log.d("wzd","create view holder");
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(mInfoList.get(position));
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        Log.d("wzd","bind view holder");
+        final Info info = mInfoList.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.onItemClick(info);
+            }
+        });
+        holder.bind(info);
     }
 
     @Override
