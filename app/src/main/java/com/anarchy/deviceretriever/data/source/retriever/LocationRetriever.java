@@ -21,11 +21,8 @@ import java.util.Locale;
  * Version 2.1.1
  * <p>
  * Date: 16/10/21 16:13
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class LocationRetriever extends BasePermissionRetriever {
     private static final String TAG = LocationRetriever.class.getSimpleName();
 

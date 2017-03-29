@@ -21,11 +21,8 @@ import java.util.TimeZone;
  * Version 2.1.1
  * <p>
  * Date: 16/10/20 10:37
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class DeviceRetriever extends BasePermissionRetriever {
 
 

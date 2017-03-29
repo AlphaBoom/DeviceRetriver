@@ -18,10 +18,8 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Version 2.1.1
  * <p>
  * Date: 16/10/17 10:31
- * Author: zhendong.wu@shoufuyou.com
  * 通过 GoggleService 获取唯一id
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 public class AdvertisingIdClient {
     public static final class AdInfo {

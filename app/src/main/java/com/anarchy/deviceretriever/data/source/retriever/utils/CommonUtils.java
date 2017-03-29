@@ -12,11 +12,8 @@ import java.security.MessageDigest;
  * Version 2.1.1
  * <p>
  * Date: 16/10/18 14:29
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class CommonUtils {
     public static String formatSize(long size) {
         String suffix = null;

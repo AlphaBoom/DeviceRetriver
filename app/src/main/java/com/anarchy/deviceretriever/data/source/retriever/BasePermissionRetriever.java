@@ -12,11 +12,8 @@ import java.util.List;
  * Version 2.1.1
  * <p>
  * Date: 16/10/21 16:16
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 abstract class BasePermissionRetriever implements PermissionRetriever {
     final Context mContext;
     List<Info> mResult;

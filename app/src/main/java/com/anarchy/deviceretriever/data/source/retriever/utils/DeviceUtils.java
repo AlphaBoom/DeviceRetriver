@@ -27,11 +27,8 @@ import java.util.List;
  * Version 2.1.1
  * <p>
  * Date: 16/10/14 16:20
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class DeviceUtils {
     private static long sMaxCpuFreq = 0;
     private static int sTotalMemory = 0;

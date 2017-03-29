@@ -27,9 +27,6 @@ import java.util.List;
  * Version 2.1.1
  * <p>
  * Date: 16/10/25 16:34
- * Author: zhendong.wu@shoufuyou.com
- * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 public class HomeFragment extends Fragment implements HomeContract.View{
     private static final int REQUEST_CODE = 233;

@@ -17,11 +17,7 @@ import java.util.List;
  * Version 2.1.1
  * <p>
  * Date: 16/10/25 17:45
- * Author: zhendong.wu@shoufuyou.com
- * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     private List<Info> mInfoList;
     private final HomeContract.Presenter mPresenter;

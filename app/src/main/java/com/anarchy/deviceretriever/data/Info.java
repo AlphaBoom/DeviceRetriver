@@ -6,9 +6,7 @@ import java.util.UUID;
  * Version 2.1.1
  * <p>
  * Date: 16/10/19 16:10
- * Author: zhendong.wu@shoufuyou.com
  * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
 
 public class Info {

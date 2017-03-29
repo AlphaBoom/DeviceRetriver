@@ -19,11 +19,7 @@ import rx.schedulers.Schedulers;
  * Version 2.1.1
  * <p>
  * Date: 16/10/25 17:02
- * Author: zhendong.wu@shoufuyou.com
- * <p/>
- * Copyright © 2016 Shanghai Xiaotu Network Technology Co., Ltd.
  */
-
 public class HomePresenter implements HomeContract.Presenter {
     private final HomeContract.View mView;
     private final PermissionInfoSource mSource;
